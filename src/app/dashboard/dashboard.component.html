@@ -1,0 +1,31 @@
+<div>
+  <h1>Post Management System</h1>
+  <div class="log-bt">
+    <button (click)="logout()" class="edit-button">Logout</button>
+  </div>
+
+  <form (submit)="postData(newPost)">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" [(ngModel)]="newPost.title" required>
+
+    <label for="body">Body:</label>
+    <textarea id="body" name="body" [(ngModel)]="newPost.body" required></textarea>
+
+    <button type="submit">Add Post</button>
+     <!-- Navigate to the new post page -->
+  </form>
+
+  <div class="post-container">
+    <div *ngFor="let post of data" class="post-item">
+      <div class="post-content">
+        <h2>{{ post.id }}</h2>
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.body }}</p>
+      </div>
+      <div class="button-group">
+        <button class="delete-button" (click)="deleteData(post.id)">Delete</button>
+        <!-- <button class="edit-button" (click)="editData(post)">Edit</button> -->
+      </div>
+    </div>
+  </div>
+</div>
